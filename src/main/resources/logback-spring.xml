@@ -8,8 +8,8 @@
     <property name="logPath" value="./logs"/>
     <!-- 彩色日志格式 -->
     <property name="colorPattern"
-              value="%d{HH:mm:ss.SSS} %contextName [%yellow(%thread)] %highlight(%-5level) %green(%logger){36} - %msg%n"/>
-    <property name="normalPattern" value="%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n"/>
+              value="%d{HH:mm:ss.SSS} %contextName [%yellow(%thread)] %highlight(%-5level) %green(%logger){36}:%green(%line) - %msg%n"/>
+    <property name="normalPattern" value="%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36}:%line - %msg%n"/>
     <contextName>${appName}</contextName>
 
     <!--输出到控制台-->

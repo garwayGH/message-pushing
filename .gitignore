@@ -37,3 +37,4 @@ mvnw
 mvnw.cmd
 src/main/java/com/viatom/messagepushing/service/
 src/main/resources/templates/
+logs/
