@@ -54,6 +54,6 @@ JAR=${LIB_DIR}/${APPLICATION_JAR}
 nohup java -jar $JAR $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS  --spring.config.location=$CONFIG > $STDOUT_FILE 2>&1 &
 
 echo "OK!"
-PIDS=`jps -l |grep java |grep "$DEPLOY_DIR" | awk '{print $1}'`
+PIDS=`ps -f | grep java | grep "$CONF_DIR" |awk '{print $2}'`
 echo "PID: $PIDS"
 echo "STDOUT: $STDOUT_FILE"
