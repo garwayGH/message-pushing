@@ -1,13 +1,30 @@
 #服务端口
 server:
   port: 7777
+
 #logback日志配置文件路径
 logging:
   config: classpath:logback-spring.xml
+
 #spring配置
 spring:
+  #thymeleaf配置
+  thymeleaf:
+    #prefix只能写成classpath:/templates/ 如果只写成 /templates/会报错
+    prefix: classpath:/templates/
+    suffix: .html
+    servlet:
+      content-type: text/html
+    #测试环境下缓存关闭，正式环境打开
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+
+  #分环境配置
   profiles:
     active: test
+
+  #数据库
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     #JDBC配置
