@@ -10,12 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EchartsTestController {
 
     @GetMapping("/echarts")
-    public String testeCharts() {
+    public String testCharts() {
         return "redirect:/echartstest.html";
     }
 
     @GetMapping("/pie")
-    public String testePie() {
+    public String testPie() {
         return "redirect:/pie.html";
+    }
+
+    @GetMapping("/testCharts")
+    public String charts() {
+        return "echartstest";
     }
 }

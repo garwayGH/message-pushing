@@ -73,10 +73,28 @@ spring:
         url-pattern: /druid/*
           # 是否能够重置数据 #
         reset-enable: true
+        #druid监控页面账号密码，页面 ip:port/druid/login.html
         login-username: druid
         login-password: druid
 
-
+#pagehelper配置
+pagehelper:
+  #使offset跟pageNum等同，limit与pageSize含义相同
+  offset-as-page-num: true
+  #设置在分页查询时，把总数也查出来
+  row-bounds-with-count: true
+  #当 pageSize=0 或者 RowBounds.limit = 0 就会查询出全部的结果。
+  page-size-zero: true
+  #pageNum<=0 会查询第一页，如果 pageNum>总页数 会查询最后一页。
+  reasonable: false
+  #  params: pageNum=pageNum;pageSize=pageSize;
+  #-------------------------------------------
+  #support-methods-arguments如果设置为true，
+  #则可以直接通过参数传入pageNum和pageSize，同时要配置pageNum和pageSize，如上。
+  #同时在参数面前添加@Param('pageNum') 这样的注解
+  #-------------------------------------------
+  support-methods-arguments: false
+  helper-dialect: mysql
 
 
 
