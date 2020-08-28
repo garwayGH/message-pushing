@@ -7,7 +7,7 @@ CONF_DIR=$DEPLOY_DIR/conf
 
 SERVER_NAME='message-pushing'
 
-PIDS=`ps -f | grep java | grep "$CONF_DIR" |awk '{print $2}'`
+PIDS=`ps -ef | grep java | grep "$CONF_DIR" |awk '{print $2}'`
 if [ -z "$PIDS" ]; then
     echo "ERROR: The $SERVER_NAME does not started!"
     exit 1

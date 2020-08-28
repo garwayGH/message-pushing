@@ -20,9 +20,9 @@ spring:
     mode: HTML
     encoding: UTF-8
 
-  #分环境配置
-  profiles:
-    active: test
+  #分环境配置,为了在脚本启动时让springboot读到application-test.yml的配置文件
+#  profiles:
+#    active: test
 
   #数据库
   datasource:

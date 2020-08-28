@@ -29,7 +29,7 @@ public class HelloController {
         return "你好";
     }
 
-    @GetMapping("testCH/{name}")
+    @GetMapping("/testCH/{name}")
     @ResponseBody
     public String testCh(@PathVariable String name) {
         return name;

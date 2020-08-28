@@ -46,12 +46,17 @@ if [ -n "$BITS" ]; then
 else
     JAVA_MEM_OPTS=" -server -Xms1g -Xmx1g -XX:PermSize=128m -XX:SurvivorRatio=2 -XX:+UseParallelGC "
 fi
-CONFIG=`find $CONF_DIR -name application*`
 
+CONFIG=""
+for file_a in ${CONF_DIR}/*
+do
+    CONFIG=$CONFIG$file_a","
+done
+CONFIG=${CONFIG%?}
 echo "using config => $CONFIG"
 echo -e "Starting the $SERVER_NAME ...\c"
 JAR=${LIB_DIR}/${APPLICATION_JAR}
-nohup java -jar $JAR $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS  --spring.config.location=$CONFIG > $STDOUT_FILE 2>&1 &
+nohup java -jar $JAR $JAVA_OPTS $JAVA_MEM_OPTS $JAVA_DEBUG_OPTS $JAVA_JMX_OPTS  --spring.config.additional-location=$CONFIG > $STDOUT_FILE 2>&1 &
 
 echo "OK!"
 PIDS=`ps -f | grep java | grep "$CONF_DIR" |awk '{print $2}'`

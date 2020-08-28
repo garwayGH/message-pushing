@@ -4,8 +4,14 @@
 在打开配置文件前，请先设置IDE的编码为utf-8，不然配置文件会有可能乱码  
 同时startup文件夹下的启动脚本，请确保是Unix编码，不然在linux系统启动会报错
 
+###前言
+推荐使用IDEA作为项目的开发工具  
+项目使用了lombok插件，IDEA对于集成lombok很方便
+
 ###项目架构：
 * Springboot
+* Swagger
+  * 使用了Swagger2作为接口文档 路径为：host:port/swagger-ui.html
 * Mybatis
   * 使用了pageHelper插件来进行数据分页
 * Druid连接池

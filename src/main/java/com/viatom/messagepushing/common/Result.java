@@ -1,6 +1,7 @@
 package com.viatom.messagepushing.common;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 
 /**
  * json返回实体
@@ -8,11 +9,8 @@ import java.io.Serializable;
  * @date 2020.07.17
  * @param <T>
  */
-public class Result<T> implements Serializable {
-    private static final long serialVersionUID = 7528805354442762223L;
-
-    public static final int RESULT_SUCCESS = 1;
-    public static final int RESULT_FAILURE = -1;
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Result<T> {
 
     /**
      * 返回代码
@@ -21,21 +19,40 @@ public class Result<T> implements Serializable {
     /**
      * 返回信息
      */
-    private String message;
+    private String msg;
     /**
      * 返回对象
      */
-    private Object data;
+    private T data;
 
-    public Result(int code, String message) {
-        this(code, message, "");
+    /**
+     * 成功返回数据
+     * @param data 数据对象
+     * @param <T>
+     * @return
+     */
+    public static <T> Result<T> success(T data) {
+        return new Result<>(ResponseCode.SUCCESS.code(), ResponseCode.SUCCESS.msg(), data);
     }
 
-    public Result(int code, String message, Object data) {
+    public static <T> Result<T> success() {
+        return new Result<>(ResponseCode.SUCCESS.code(), ResponseCode.SUCCESS.msg());
+    }
+
+    public static <T> Result<T> error() {
+        return new Result<>(ResponseCode.ERROR.code(), ResponseCode.ERROR.msg());
+    }
+
+    private Result(int code, String message) {
+        this(code, message, null);
+    }
+
+    private Result(int code, String message, T data) {
         this.code = code;
-        this.message = message;
+        this.msg = message;
         this.data = data;
     }
+
 
     public int getCode() {
         return code;
@@ -45,19 +62,19 @@ public class Result<T> implements Serializable {
         this.code = code;
     }
 
-    public String getMessage() {
-        return message;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 }

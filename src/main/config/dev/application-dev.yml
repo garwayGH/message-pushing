@@ -20,9 +20,9 @@ spring:
     mode: HTML
     encoding: UTF-8
 
-  #分环境配置
-  profiles:
-    active: dev
+  #分环境配置,为了在脚本启动时让springboot读到application-dev.yml的配置文件
+#  profiles:
+#    active: dev
 
   #数据库
   datasource:
@@ -102,3 +102,4 @@ pagehelper:
 mybatis:
   type-aliases-package: com.viatom.messagepushing.pojo
   mapper-locations: classpath:mybatis/mapper/*Mapper.xml
+

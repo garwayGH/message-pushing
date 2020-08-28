@@ -17,8 +17,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     public Result globalException(Exception e) {
-        log.error("全局捕捉的异常为:{}",e.getMessage());
+        log.error("全局捕捉的异常为:",e);
 
-        return new Result(Result.RESULT_FAILURE,"系统出错");
+        return Result.error();
     }
 }
