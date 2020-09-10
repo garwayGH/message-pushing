@@ -1,6 +1,13 @@
 #服务端口
 server:
   port: 7777
+  tomcat:
+    threads:
+      min-spare: 100
+      max: 1000
+    accept-count: 700
+    uri-encoding: UTF-8
+    connection-timeout: 30000
 
 #logback日志配置文件路径
 logging:

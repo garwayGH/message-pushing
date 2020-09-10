@@ -1,7 +1,12 @@
 package com.viatom.messagepushing.utils;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
+import org.springframework.util.StringUtils;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -99,4 +104,30 @@ public class OkHttpUtil {
         this.doAsyncPost(url, null, json, callback);
     }
 
+
+    /**
+     * post同步请求
+     * @param url
+     * @param headers
+     * @param json
+     * @return
+     * @throws Exception
+     */
+    public Response doSyncPost(String url,Headers headers, String json) throws Exception {
+        RequestBody requestBody = RequestBody.create(JSON, json);
+        Request.Builder builder = new Request.Builder()
+                .url(url)
+                .post(requestBody);
+
+        if (headers != null) {
+            builder.headers(headers);
+        }
+
+        Request request = builder.build();
+        return okHttpClient.newCall(request).execute();
+    }
+
+    public Response doSyncPost(String url, String json) throws Exception{
+        return this.doSyncPost(url, null, json);
+    }
 }
