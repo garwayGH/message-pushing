@@ -1,6 +1,7 @@
 package com.viatom.messagepushing.service.impl;
 
 import com.viatom.messagepushing.common.Result;
+import com.viatom.messagepushing.pojo.IosBean;
 import com.viatom.messagepushing.service.IosNotificationService;
 import com.viatom.messagepushing.umengpush.IosPush;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,8 @@ public class IosNotificationServiceImpl implements IosNotificationService {
     private IosPush iosPush;
 
     @Override
-    public Result<?> sendIosUnicast() {
-
-        return null;
+    public Result<?> sendIosUnicast(IosBean iosBean) {
+        iosPush.sendIosUnicast(iosBean);
+        return Result.success();
     }
 }

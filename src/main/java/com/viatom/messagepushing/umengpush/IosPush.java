@@ -1,6 +1,12 @@
 package com.viatom.messagepushing.umengpush;
 
+import com.viatom.messagepushing.common.PushTag;
+import com.viatom.messagepushing.pojo.IosBean;
+import com.viatom.messagepushing.umengpush.push.ios.IosBroadcast;
+import com.viatom.messagepushing.umengpush.push.ios.IosCustomizedcast;
+import com.viatom.messagepushing.umengpush.push.ios.IosListcast;
 import com.viatom.messagepushing.umengpush.push.ios.IosUnicast;
+import com.viatom.messagepushing.utils.PushUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -21,16 +27,17 @@ public class IosPush {
     private static String appMasterSecret;
 
 
+//    apiKey:2207987
+//    apiSecurity:kYyrBofUws
+
     @Value("${iosAppKey}")
     public void setAppKey(String appKey) {
         IosPush.appKey = appKey;
-//        log.info("appKey是{}",IosPush.appKey);
     }
 
     @Value("${iosAppMasterSecret}")
     public void setAppMasterSecret(String appMasterSecret) {
         IosPush.appMasterSecret = appMasterSecret;
-//        log.info("appMasterSecret是{}",IosPush.appMasterSecret);
     }
 
 
@@ -38,19 +45,66 @@ public class IosPush {
      * ios单播推送
      * 测试device token ：6e7e81c33876f3ada6d9d8c01f96496bcefa7c50c8c1244ec6509726ba50e095
      */
-    public void sendIosUnicast(String deviceToken) {
+    public void sendIosUnicast(IosBean iosBean) {
         try {
             IosUnicast iosUnicast = new IosUnicast(appKey, appMasterSecret);
-            iosUnicast.setDeviceToken(deviceToken);
-            iosUnicast.setAlert("ios测试", "测试", "测试测试");
+            iosUnicast.setDeviceToken(iosBean.getDeviceTokens());
+            iosUnicast.setAlert(iosBean.getTitle(), iosBean.getSubtitle(), iosBean.getBody());
             iosUnicast.setBadge(0);
             iosUnicast.setSound("default");
-            iosUnicast.setTestMode();
+            iosUnicast.setDescription(iosBean.getDescription());
+            PushUtil.changeModeByPropertied(iosUnicast);
             client.send(iosUnicast);
         } catch (Exception e) {
             log.error("ios单播推送异常：", e);
         }
 
+    }
+
+    /**
+     * ios列播
+     * @param iosBean
+     */
+    public void sendIosListcast(IosBean iosBean) {
+        this.sendIosUnicast(iosBean);
+    }
+
+    /**
+     * ios广播
+     * @param iosBean
+     */
+    public void sendBroadcast(IosBean iosBean) {
+        try {
+
+            IosBroadcast iosBroadcast = new IosBroadcast(appKey, appMasterSecret);
+            iosBroadcast.setAlert(iosBean.getTitle(),iosBean.getSubtitle(),iosBean.getBody());
+            iosBroadcast.setBadge(0);
+            iosBroadcast.setSound("default");
+            iosBroadcast.setDescription(iosBean.getDescription());
+            PushUtil.changeModeByPropertied(iosBroadcast);
+            client.send(iosBroadcast);
+        } catch (Exception e) {
+            log.error("ios广播推送异常：", e);
+        }
+    }
+
+    /**
+     * 别名播
+     * @param iosBean
+     */
+    public void sendCustomizedcast(IosBean iosBean) {
+        try {
+            IosCustomizedcast iosCustomizedcast = new IosCustomizedcast(appKey, appMasterSecret);
+            iosCustomizedcast.setAlert(iosBean.getTitle(), iosBean.getSubtitle(), iosBean.getBody());
+            iosCustomizedcast.setBadge(0);
+            iosCustomizedcast.setSound("default");
+            iosCustomizedcast.setDescription(iosBean.getDescription());
+            iosCustomizedcast.setAlias(iosBean.getAlias(), iosBean.getAliasType());
+            PushUtil.changeModeByPropertied(iosCustomizedcast);
+            client.send(iosCustomizedcast);
+        } catch (Exception e) {
+            log.error("ios别名播推送异常：", e);
+        }
     }
 
 

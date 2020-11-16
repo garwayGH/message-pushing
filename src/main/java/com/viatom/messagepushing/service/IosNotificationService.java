@@ -1,6 +1,7 @@
 package com.viatom.messagepushing.service;
 
 import com.viatom.messagepushing.common.Result;
+import com.viatom.messagepushing.pojo.IosBean;
 
 /**
  * @author qiujiawei
@@ -13,5 +14,5 @@ public interface IosNotificationService {
      * 单播
      * @return
      */
-    Result<?> sendIosUnicast();
+    Result<?> sendIosUnicast(IosBean iosBean);
 }

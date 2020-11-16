@@ -1,6 +1,8 @@
 package com.viatom.messagepushing.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
@@ -10,19 +12,23 @@ import com.fasterxml.jackson.annotation.JsonInclude;
  * @param <T>
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@ApiModel("返回相应数据")
 public class Result<T> {
 
     /**
      * 返回代码
      */
+    @ApiModelProperty(value = "返回代码",required = true,dataType = "int")
     private int code;
     /**
      * 返回信息
      */
+    @ApiModelProperty(value = "返回信息",required = true,dataType = "String")
     private String msg;
     /**
      * 返回对象
      */
+    @ApiModelProperty(value = "返回数据对象",dataType = "json")
     private T data;
 
     /**

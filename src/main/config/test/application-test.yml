@@ -29,9 +29,9 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #JDBC配置
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.126.136:3306/demo?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://172.16.0.15:3306/push?useUnicode=true&characterEncoding=utf-8
     username: root
-    password: root
+    password: Viatom4E
 
     #Druid 连接池配置
     druid:

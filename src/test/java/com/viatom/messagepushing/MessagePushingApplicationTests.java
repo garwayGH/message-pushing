@@ -5,9 +5,13 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Maps;
+import com.viatom.messagepushing.umengpush.IosPush;
 import com.viatom.messagepushing.umengpush.vo.Filter;
+import com.viatom.messagepushing.umengpush.vo.MyCallBack;
 import com.viatom.messagepushing.umengpush.vo.ios.Aps;
 import com.viatom.messagepushing.umengpush.vo.ios.IosPayLoad;
+import com.viatom.messagepushing.utils.GetBeanUtil;
+import com.viatom.messagepushing.utils.GetPropertiesUtil;
 import com.viatom.messagepushing.utils.ReflectUtil;
 import okhttp3.OkHttpClient;
 import org.junit.jupiter.api.Test;
@@ -15,8 +19,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.io.IOException;
+import java.nio.channels.ServerSocketChannel;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.*;
@@ -32,6 +38,12 @@ class MessagePushingApplicationTests {
 
     @Autowired
     DataSource  dataSource;
+
+    @Resource
+    IosPush iosPush;
+
+    @Resource
+    GetPropertiesUtil getPropertiesUtil;
 
     @Value("${iosAppKey}")
     String appKey;
@@ -52,8 +64,17 @@ class MessagePushingApplicationTests {
 //        String format = dateTime.format(formatter);
 //
 //        System.out.println(dateTime1.format(formatter));
-        System.out.println(appKey);
-        System.out.println(appMasterSecret);
+//        System.out.println(appKey);
+//        System.out.println(appMasterSecret);
+
+//        MyCallBack myCallBack = new MyCallBack();
+//        System.out.println("=============" + myCallBack.getUserMapper().toString());
+
+//        boolean productMode = getPropertiesUtil.getProductMode();
+        GetPropertiesUtil propertiesUtil = GetBeanUtil.getBean(GetPropertiesUtil.class);
+
+        System.out.println(propertiesUtil.getProductMode());
+
     }
 
     @Test
@@ -95,4 +116,11 @@ class MessagePushingApplicationTests {
         String s = objectMapper.writeValueAsString(iosPayLoad);
         System.out.println(s);
     }
+
+    @Test
+    void test03() throws Exception{
+        ServerSocketChannel channel = ServerSocketChannel.open();
+    }
+
+
 }

@@ -15,7 +15,7 @@
   * 使用了Swagger2作为接口文档 路径为：host:port/swagger-ui.html
 * Mybatis
   * 使用了pageHelper插件来进行数据分页
-* Druid连接池
+* Druid连接池 监控页面：ip:port/druid/login.html
 * maven 3.6.3
   * maven采用了分环境方式来打包，同时使用了assembly插件来进行自定义打包
   * maven打包命令：mvn clean package -Dmaven.test.skip=true -Ptest （PS：其中-P后面可选dev/test/pro）

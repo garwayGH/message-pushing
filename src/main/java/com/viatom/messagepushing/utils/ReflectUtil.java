@@ -39,7 +39,7 @@ public class ReflectUtil {
                     dynamicBean.setValue(k, propertyUtilsBean.getNestedProperty(dest, k));
                 }
             } catch (Exception e) {
-                log.error("添加就属性异常：", e);
+                log.error("添加旧属性异常：", e);
             }
         });
 

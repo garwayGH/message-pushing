@@ -2,6 +2,7 @@ package com.viatom.messagepushing.umengpush;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Maps;
+import com.viatom.messagepushing.umengpush.vo.MyCallBack;
 import com.viatom.messagepushing.umengpush.vo.UmengUpload;
 import com.viatom.messagepushing.umengpush.vo.constants.Constants;
 import com.viatom.messagepushing.utils.OkHttpUtil;
@@ -38,7 +39,7 @@ public class PushClient {
     /**
      * 友盟域名
      */
-    private static final String HOST = "http://msg.umeng.com";
+    private static final String HOST = "https://msgapi.umeng.com";
 
     /**
      * 文件上传路径
@@ -68,33 +69,8 @@ public class PushClient {
                                      .add("User-Agent", USER_AGENT)
                                      .build();
 
-        okHttpUtil.doAsyncPost(url, headers, postBody, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                log.error("http请求异常：", e);
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                boolean successful = response.isSuccessful();
-                if (successful) {
-                    ResponseBody body = response.body();
-                    if (body != null) {
-                        BufferedReader br = new BufferedReader(new InputStreamReader(body.byteStream()));
-                        StringBuilder sb = new StringBuilder();
-                        String line = "";
-                        while ((line = br.readLine()) != null) {
-                            sb.append(line);
-                        }
-                        System.out.println(sb.toString());
-                        br.close();
-                    }
-                    int code = response.code();
-                    System.out.println("code======" + code);
-                    response.close();
-                }
-            }
-        });
+        //异步发送
+        okHttpUtil.doAsyncPost(url, headers, postBody, new MyCallBack());
 
         return true;
     }

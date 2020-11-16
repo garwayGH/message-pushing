@@ -70,7 +70,7 @@ public abstract class AbstractUmengNotification {
             postJson = this.rootJson.writeValueAsString(this.umengRoot);
 
         } catch (JsonProcessingException e) {
-            log.error("对象转换成json异常：", e);
+            log.error("对象转换为json异常：", e);
         }
         return postJson;
     }
