@@ -1,13 +1,13 @@
-package com.viatom.messagepushing.mapper;
+package com.viatom.messagepushing.service;
 
 import com.viatom.messagepushing.pojo.vo.BaseSearchConditional;
-import org.springframework.stereotype.Repository;
 
 /**
  * @author qiujiawei
+ * @description AndroidNotificationService
+ * @date 2020/11/18 14:10
  */
-@Repository
-public interface UserMapper {
+public interface AndroidNotificationService {
 
     /**
      * 绑定用户的友盟deviceToken
@@ -15,5 +15,4 @@ public interface UserMapper {
      * @return
      */
     int bindUserDeviceToken(BaseSearchConditional searchConditional);
-
 }

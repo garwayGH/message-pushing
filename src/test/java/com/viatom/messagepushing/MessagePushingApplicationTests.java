@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Maps;
+import com.viatom.messagepushing.mytest.TestAspect;
 import com.viatom.messagepushing.umengpush.IosPush;
 import com.viatom.messagepushing.umengpush.vo.Filter;
 import com.viatom.messagepushing.umengpush.vo.MyCallBack;
@@ -18,6 +19,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -50,6 +52,10 @@ class MessagePushingApplicationTests {
 
     @Value("${iosAppMasterSecret}")
     String appMasterSecret;
+
+    @Resource
+    TestAspect testAspect;
+
     @Test
     void contextLoads() throws SQLException {
 //        Connection con = dataSource.getConnection();
@@ -71,9 +77,11 @@ class MessagePushingApplicationTests {
 //        System.out.println("=============" + myCallBack.getUserMapper().toString());
 
 //        boolean productMode = getPropertiesUtil.getProductMode();
-        GetPropertiesUtil propertiesUtil = GetBeanUtil.getBean(GetPropertiesUtil.class);
-
-        System.out.println(propertiesUtil.getProductMode());
+//        GetPropertiesUtil propertiesUtil = GetBeanUtil.getBean(GetPropertiesUtil.class);
+//
+//        System.out.println(propertiesUtil.getProductMode());
+//        TestAspect testAspect = new TestAspect();
+        testAspect.testA();
 
     }
 

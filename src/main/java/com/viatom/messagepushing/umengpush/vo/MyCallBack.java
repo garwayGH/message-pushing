@@ -22,9 +22,7 @@ public class MyCallBack implements Callback {
 
     private UserMapper userMapper = GetBeanUtil.getBean(UserMapper.class);
 
-    public UserMapper getUserMapper() {
-        return this.userMapper;
-    }
+
 
     @Override
     public void onFailure(Call call, IOException e) {

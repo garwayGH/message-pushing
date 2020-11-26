@@ -3,8 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.viatom.messagepushing.mapper.UserMapper">
 
-    <select id="getUserByPhone" parameterType="java.lang.String" resultType="com.viatom.messagepushing.pojo.User">
-        select * from user where phone = #{phone}
-    </select>
+
+    <insert id="bindUserDeviceToken" parameterType="com.viatom.messagepushing.pojo.vo.BaseSearchConditional" >
+        insert into
+        push_user(id,user_id,device_token,create_time)
+        values(null,#{userId},#{deviceToken},now())
+    </insert>
+
 
 </mapper>

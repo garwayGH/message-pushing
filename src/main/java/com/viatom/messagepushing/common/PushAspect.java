@@ -21,9 +21,12 @@ public class PushAspect {
     public void pointCut() {}
 
 
+
     @AfterThrowing(pointcut = "pointCut()",throwing = "e")
     public void doAfterThrowingAdvice(JoinPoint joinPoint, Throwable e) {
         log.info("异常通知");
         log.info("代理方法：{},异常信息：{}",joinPoint.getSignature().getName(),e.toString());
     }
+
+
 }

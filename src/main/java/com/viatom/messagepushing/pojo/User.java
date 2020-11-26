@@ -7,7 +7,9 @@ import lombok.Data;
  */
 @Data
 public class User {
+
     private int id;
-    private String username;
-    private String phone;
+    private int userId;
+    private String deviceToken;
+    private String createTime;
 }

@@ -12,7 +12,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @param <T>
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@ApiModel("返回相应数据")
+@ApiModel("响应数据实体")
 public class Result<T> {
 
     /**
@@ -28,7 +28,7 @@ public class Result<T> {
     /**
      * 返回对象
      */
-    @ApiModelProperty(value = "返回数据对象",dataType = "json")
+    @ApiModelProperty(value = "返回数据对象",dataType = "json",allowEmptyValue = true)
     private T data;
 
     /**
@@ -59,6 +59,9 @@ public class Result<T> {
         this.data = data;
     }
 
+    private Result() {
+
+    }
 
     public int getCode() {
         return code;

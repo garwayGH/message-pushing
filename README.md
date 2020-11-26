@@ -19,3 +19,4 @@
 * maven 3.6.3
   * maven采用了分环境方式来打包，同时使用了assembly插件来进行自定义打包
   * maven打包命令：mvn clean package -Dmaven.test.skip=true -Ptest （PS：其中-P后面可选dev/test/pro）
+* 项目采用git进行代码管理，.gitignore文件管理忽略提交的文件

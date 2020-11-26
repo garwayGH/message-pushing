@@ -20,7 +20,7 @@ public class PushController {
 
 
     @ApiOperation(value = "根据用户id进行推送")
-    @ApiImplicitParam(name = "userId",value = "用户id",required = true)
+    @ApiImplicitParam(name = "userId", value = "用户id", required = true, paramType = "path", dataType = "int")
     @PostMapping("/ErOneAnalyzed/{userId}")
     public void pushEr1AnalyzedResult(@PathVariable("userId") int userId) {
 

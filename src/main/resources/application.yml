@@ -1,13 +1,20 @@
 #服务端口
 server:
   port: 7777
-  tomcat:
+#  tomcat:
+#    threads:
+#      min-spare: 100
+#      max: 1000
+#    accept-count: 700
+#    uri-encoding: UTF-8
+#    connection-timeout: 30000
+  undertow:
     threads:
-      min-spare: 100
-      max: 1000
-    accept-count: 700
-    uri-encoding: UTF-8
-    connection-timeout: 30000
+      io: 16
+      worker: 256
+    buffer-size: 1024
+    direct-buffers: true
+    url-charset: UTF-8
 
 #logback日志配置文件路径
 logging:
@@ -32,7 +39,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #JDBC配置
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://150.158.125.213:3306/test?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://gz-cdb-ob8snlan.sql.tencentcdb.com:59544/push?useUnicode=true&characterEncoding=utf-8
     username: root
     password: Viatom4E
 

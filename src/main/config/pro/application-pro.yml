@@ -1,6 +1,13 @@
 #服务端口
 server:
   port: 7777
+  undertow:
+    threads:
+      io: 16
+      worker: 256
+    buffer-size: 1024
+    direct-buffers: true
+    url-charset: UTF-8
 
 #logback日志配置文件路径
 logging:
