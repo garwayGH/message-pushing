@@ -5,7 +5,11 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.google.common.collect.Maps;
+import com.viatom.messagepushing.config.IwownDataBaseProperties;
+import com.viatom.messagepushing.config.PushDataBaseProperties;
+import com.viatom.messagepushing.mapper.iwown.ClientInfoMapper;
 import com.viatom.messagepushing.mytest.TestAspect;
+import com.viatom.messagepushing.pojo.iwown.ClientInfo;
 import com.viatom.messagepushing.umengpush.IosPush;
 import com.viatom.messagepushing.umengpush.vo.Filter;
 import com.viatom.messagepushing.umengpush.vo.MyCallBack;
@@ -56,6 +60,15 @@ class MessagePushingApplicationTests {
     @Resource
     TestAspect testAspect;
 
+    @Resource
+    PushDataBaseProperties pushDataBaseProperties;
+
+    @Resource
+    IwownDataBaseProperties iwownDataBaseProperties;
+
+    @Resource
+    ClientInfoMapper clientInfoMapper;
+
     @Test
     void contextLoads() throws SQLException {
 //        Connection con = dataSource.getConnection();
@@ -81,8 +94,13 @@ class MessagePushingApplicationTests {
 //
 //        System.out.println(propertiesUtil.getProductMode());
 //        TestAspect testAspect = new TestAspect();
-        testAspect.testA();
+//        testAspect.testA();
 
+
+//        System.out.println(pushDataBaseProperties.getUrl());
+//        System.out.println(iwownDataBaseProperties.getUrl());
+
+        System.out.println(clientInfoMapper.getLastAppVersion().getVersionCode());
     }
 
     @Test

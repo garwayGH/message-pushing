@@ -16,16 +16,16 @@ logging:
 #spring配置
 spring:
   #thymeleaf配置
-  thymeleaf:
-    #prefix只能写成classpath:/templates/ 如果只写成 /templates/会报错
-    prefix: classpath:/templates/
-    suffix: .html
-    servlet:
-      content-type: text/html
-    #测试环境下缓存关闭，正式环境打开
-    cache: false
-    mode: HTML
-    encoding: UTF-8
+#  thymeleaf:
+#    #prefix只能写成classpath:/templates/ 如果只写成 /templates/会报错
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    servlet:
+#      content-type: text/html
+#    #测试环境下缓存关闭，正式环境打开
+#    cache: false
+#    mode: HTML
+#    encoding: UTF-8
 
   #分环境配置,为了在脚本启动时让springboot读到application-pro.yml的配置文件
 #  profiles:
@@ -33,12 +33,23 @@ spring:
 
   #数据库
   datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
+#    type: com.alibaba.druid.pool.DruidDataSource
     #JDBC配置
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://150.158.125.213:3306/test?useUnicode=true&characterEncoding=utf-8
-    username: root
-    password: root
+    db1:
+      #数据1
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://gz-cdb-ob8snlan.sql.tencentcdb.com:59544/push?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: Viatom4E
+      type: com.alibaba.druid.pool.DruidDataSource
+
+    db2:
+      #数据2
+      driverClassName: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://150.158.125.213:3306/iwown?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: Viatom4E
+      type: com.alibaba.druid.pool.DruidDataSource
 
     #Druid 连接池配置
     druid:
@@ -105,7 +116,7 @@ pagehelper:
 
 
 #Mybatis配置
-mybatis:
-  type-aliases-package: com.viatom.messagepushing.pojo
-  mapper-locations: classpath:mybatis/mapper/*Mapper.xml
+#mybatis:
+#  type-aliases-package: com.viatom.messagepushing.pojo
+#  mapper-locations: classpath:mybatis/mapper/*Mapper.xml
 

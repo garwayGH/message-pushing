@@ -1,6 +1,6 @@
 package com.viatom.messagepushing.umengpush.vo;
 
-import com.viatom.messagepushing.mapper.UserMapper;
+import com.viatom.messagepushing.mapper.push.UserMapper;
 import com.viatom.messagepushing.utils.GetBeanUtil;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.Call;

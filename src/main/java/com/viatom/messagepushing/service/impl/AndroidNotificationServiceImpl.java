@@ -1,6 +1,6 @@
 package com.viatom.messagepushing.service.impl;
 
-import com.viatom.messagepushing.mapper.UserMapper;
+import com.viatom.messagepushing.mapper.push.UserMapper;
 import com.viatom.messagepushing.pojo.vo.BaseSearchConditional;
 import com.viatom.messagepushing.service.AndroidNotificationService;
 import org.springframework.stereotype.Service;

@@ -22,15 +22,5 @@ import javax.annotation.Resource;
 @RestController
 public class AndroidNotificationController {
 
-    @Resource
-    AndroidNotificationService androidNotificationService;
 
-    @ApiOperation(value = "绑定userId和deviceToken",response = Result.class)
-    @PostMapping("/bindDeviceToken")
-    public Result<?> bindUserDeviceToken(@RequestBody BaseSearchConditional searchConditional) {
-        int n = androidNotificationService.bindUserDeviceToken(searchConditional);
-
-        return n > 0 ? Result.success() : Result.error();
-
-    }
 }

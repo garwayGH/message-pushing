@@ -1,4 +1,4 @@
-package com.viatom.messagepushing.mapper;
+package com.viatom.messagepushing.mapper.push;
 
 import com.viatom.messagepushing.pojo.vo.BaseSearchConditional;
 import org.springframework.stereotype.Repository;

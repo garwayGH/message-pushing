@@ -1,6 +1,6 @@
 package com.viatom.messagepushing.umengpush;
 
-import com.viatom.messagepushing.pojo.IosBean;
+import com.viatom.messagepushing.pojo.push.IosBean;
 import com.viatom.messagepushing.umengpush.push.ios.IosBroadcast;
 import com.viatom.messagepushing.umengpush.push.ios.IosCustomizedcast;
 import com.viatom.messagepushing.umengpush.push.ios.IosUnicast;

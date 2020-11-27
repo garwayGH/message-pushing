@@ -1,7 +1,7 @@
 package com.viatom.messagepushing.service;
 
 import com.viatom.messagepushing.common.Result;
-import com.viatom.messagepushing.pojo.IosBean;
+import com.viatom.messagepushing.pojo.push.IosBean;
 
 /**
  * @author qiujiawei

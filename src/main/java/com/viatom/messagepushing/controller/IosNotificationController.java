@@ -1,7 +1,7 @@
 package com.viatom.messagepushing.controller;
 
 import com.viatom.messagepushing.common.Result;
-import com.viatom.messagepushing.pojo.IosBean;
+import com.viatom.messagepushing.pojo.push.IosBean;
 import com.viatom.messagepushing.service.IosNotificationService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

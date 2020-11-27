@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @SpringBootApplication
 @EnableTransactionManagement()
-@MapperScan("com.viatom.messagepushing.mapper")
 @PropertySources({@PropertySource(value = "classpath:/message-pushing.properties",ignoreResourceNotFound = true,encoding = "utf-8")})
 public class MessagePushingApplication {
 

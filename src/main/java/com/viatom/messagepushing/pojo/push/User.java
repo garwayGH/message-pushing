@@ -1,4 +1,4 @@
-package com.viatom.messagepushing.pojo;
+package com.viatom.messagepushing.pojo.push;
 
 import lombok.Data;
 
