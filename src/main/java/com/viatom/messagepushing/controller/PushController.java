@@ -3,10 +3,10 @@ package com.viatom.messagepushing.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author qiujiawei
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2020/11/12 10:04
  */
 @Api(tags = "后台消息推送")
-@Controller
+@RestController
 @RequestMapping("/push")
 public class PushController {
 

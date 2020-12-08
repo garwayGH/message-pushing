@@ -1,5 +1,6 @@
 package com.viatom.messagepushing.utils;
 
+import com.viatom.messagepushing.umengpush.AbstractUmengNotification;
 import com.viatom.messagepushing.umengpush.push.ios.AbstractIosNotification;
 
 /**
@@ -14,7 +15,7 @@ public class PushUtil {
      * @param notification
      * @throws Exception
      */
-    public static void changeModeByPropertied(AbstractIosNotification notification) throws Exception{
+    public static void changeModeByPropertied(AbstractUmengNotification notification) throws Exception{
         GetPropertiesUtil getPropertiesUtil = GetBeanUtil.getBean(GetPropertiesUtil.class);
         if (getPropertiesUtil.getProductMode()) {
             notification.setProductionMode();

@@ -1,5 +1,6 @@
 package com.viatom.messagepushing.umengpush.vo;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.viatom.messagepushing.mapper.push.UserMapper;
 import com.viatom.messagepushing.utils.GetBeanUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,7 @@ import okhttp3.ResponseBody;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Map;
 
 /**
  * @author qiujiawei
@@ -32,9 +34,9 @@ public class MyCallBack implements Callback {
     @Override
     public void onResponse(Call call, Response response) throws IOException {
         boolean successful = response.isSuccessful();
+        ResponseBody body = response.body();
+        int code = response.code();
         if (successful) {
-            ResponseBody body = response.body();
-            int code = response.code();
             log.info("code======{}", code);
             if (body != null) {
                 BufferedReader br = new BufferedReader(new InputStreamReader(body.byteStream()));
@@ -46,8 +48,26 @@ public class MyCallBack implements Callback {
                 log.info("请求友盟接口返回结果：{}", sb.toString());
                 br.close();
             }
-            response.close();
+        }else {
+            if (body != null) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(body.byteStream()));
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+                }
+                String resultJson = sb.toString();
+                ObjectMapper objectMapper = new ObjectMapper();
+                Map<?,?> map = objectMapper.readValue(resultJson, Map.class);
+                if (map.containsKey("data")) {
+                    Map<?,?> data = (Map<?,?>)map.get("data");
+                    String errorCode = (String) data.get("error_code");
+                    String errorMsg = (String) data.get("error_msg");
+                    log.info("友盟推送失败，errorCode:{},errorMsg:{}",errorCode,errorMsg);
+                }
+            }
         }
+        response.close();
     }
 
 

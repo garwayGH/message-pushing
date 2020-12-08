@@ -36,6 +36,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootTest
@@ -100,7 +101,8 @@ class MessagePushingApplicationTests {
 //        System.out.println(pushDataBaseProperties.getUrl());
 //        System.out.println(iwownDataBaseProperties.getUrl());
 
-        System.out.println(clientInfoMapper.getLastAppVersion().getVersionCode());
+//        System.out.println(clientInfoMapper.getLastAppVersion().getVersionCode());
+
     }
 
     @Test
@@ -127,26 +129,32 @@ class MessagePushingApplicationTests {
 
 
     public static void main(String[] args) throws Exception{
-        IosPayLoad iosPayLoad = new IosPayLoad();
-        Aps aps = new Aps();
-        aps.setBadge(1);
-        aps.setCategory("11");
-        aps.setSound("0");
-        iosPayLoad.setAps(aps);
-        HashMap<String, Object> map = Maps.newHashMap();
-        map.put("key2", "test2");
-        map.put("key3", "test3");
-        iosPayLoad = (IosPayLoad)ReflectUtil.getTarget(iosPayLoad, map);
-        ObjectMapper objectMapper = new ObjectMapper();
+//        IosPayLoad iosPayLoad = new IosPayLoad();
+//        Aps aps = new Aps();
+//        aps.setBadge(1);
+//        aps.setCategory("11");
+//        aps.setSound("0");
+//        iosPayLoad.setAps(aps);
+//        HashMap<String, Object> map = Maps.newHashMap();
+//        map.put("key2", "test2");
+//        map.put("key3", "test3");
+//        iosPayLoad = (IosPayLoad)ReflectUtil.getTarget(iosPayLoad, map);
+//        ObjectMapper objectMapper = new ObjectMapper();
+//
+//        String s = objectMapper.writeValueAsString(iosPayLoad);
+//        System.out.println(s);
 
-        String s = objectMapper.writeValueAsString(iosPayLoad);
-        System.out.println(s);
+
+        String verifyCode = String.valueOf(new Random().nextInt(899999) + 100000);
+        System.out.println(verifyCode);
     }
 
     @Test
     void test03() throws Exception{
-        ServerSocketChannel channel = ServerSocketChannel.open();
+//        ServerSocketChannel channel = ServerSocketChannel.open();
+
     }
+
 
 
 }

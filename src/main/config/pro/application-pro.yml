@@ -35,7 +35,7 @@ spring:
   datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource
     #JDBC配置
-    db1:
+    push:
       #数据1
       driverClassName: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://gz-cdb-ob8snlan.sql.tencentcdb.com:59544/push?useUnicode=true&characterEncoding=utf-8
@@ -43,7 +43,7 @@ spring:
       password: Viatom4E
       type: com.alibaba.druid.pool.DruidDataSource
 
-    db2:
+    iwown:
       #数据2
       driverClassName: com.mysql.cj.jdbc.Driver
       url: jdbc:mysql://150.158.125.213:3306/iwown?useUnicode=true&characterEncoding=utf-8

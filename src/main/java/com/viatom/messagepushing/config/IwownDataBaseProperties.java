@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-@ConfigurationProperties(prefix = "spring.datasource.db2")
+@ConfigurationProperties(prefix = "spring.datasource.iwown", ignoreInvalidFields = true)
 public class IwownDataBaseProperties {
 
     private String driverClassName;

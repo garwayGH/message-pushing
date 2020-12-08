@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * conf文件夹下的message-pushing.properties
  */
 @SpringBootApplication
-@EnableTransactionManagement()
+@EnableTransactionManagement
 @PropertySources({@PropertySource(value = "classpath:/message-pushing.properties",ignoreResourceNotFound = true,encoding = "utf-8")})
 public class MessagePushingApplication {
 

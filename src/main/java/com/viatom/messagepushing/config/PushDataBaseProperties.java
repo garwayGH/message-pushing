@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-@ConfigurationProperties(prefix = "spring.datasource.db1")
+@ConfigurationProperties(prefix = "spring.datasource.push", ignoreInvalidFields = true)
 public class PushDataBaseProperties {
 
     private String driverClassName;

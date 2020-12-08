@@ -29,4 +29,14 @@ public class ChannelProperties {
      */
     @JsonProperty("vivo_classification")
     private String vivoClassification;
+
+    /**
+     * android8以上推送消息需要新建通道，否则消息无法触达用户。
+     * push sdk 6.0.5及以上创建了默认的通道:upush_default，
+     * 消息提交厂商通道时默认添加该通道。如果要自定义通道名称或使用私信，
+     * 请自行创建通道，推送消息时携带该参数
+     * 具体可参考 [oppo通知通道适配] https://open.oppomobile.com/wiki/doc#id=10289
+     */
+    @JsonProperty("oppo_channel_id")
+    private String oppoChannelId;
 }

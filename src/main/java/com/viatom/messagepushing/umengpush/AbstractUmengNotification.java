@@ -184,9 +184,7 @@ public abstract class AbstractUmengNotification {
             Method method = clazz.getMethod("set" + capitalize, type);
             method.setAccessible(true);
             if (value != null) {
-                method.invoke(obj, this.cast(type,value));
-            }else {
-                method.invoke(obj, null);
+                method.invoke(obj, this.cast(type, value));
             }
 
         } catch (NoSuchFieldException e) {
@@ -196,7 +194,9 @@ public abstract class AbstractUmengNotification {
         } catch (IllegalAccessException e) {
             log.error("非法访问class属性或方法：", e);
         } catch (InvocationTargetException e) {
-            log.error("调用目标异常：",e);
+            log.error("调用目标异常：", e);
+        } catch (Exception e) {
+            log.error("反射设置类属性值异常：", e);
         }
     }
 

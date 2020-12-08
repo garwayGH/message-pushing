@@ -68,7 +68,7 @@ public class PushClient {
         Headers headers = new Headers.Builder()
                                      .add("User-Agent", USER_AGENT)
                                      .build();
-
+        log.info("异步推送消息body：{}",postBody);
         //异步发送
         okHttpUtil.doAsyncPost(url, headers, postBody, new MyCallBack());
 
