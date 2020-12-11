@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 public class PushSearchConditional {
 
-    private int appType;
+    private String appType;
     private String version;
     private String title;
     private String ticker;

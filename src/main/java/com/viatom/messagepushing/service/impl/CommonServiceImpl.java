@@ -6,6 +6,7 @@ import com.viatom.messagepushing.pojo.vo.PushSearchConditional;
 import com.viatom.messagepushing.service.CommonService;
 import com.viatom.messagepushing.umengpush.AndroidPush;
 import com.viatom.messagepushing.umengpush.IosPush;
+import io.swagger.models.auth.In;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -27,12 +28,12 @@ public class CommonServiceImpl implements CommonService {
     @Override
     public void versionPush(PushSearchConditional conditional) {
         //判断app类型
-        if (conditional.getAppType() == 1) {
+        if (Integer.parseInt(conditional.getAppType()) == 1) {
             IosBean iosBean = new IosBean();
             iosBean.setTitle(conditional.getTitle());
-            iosBean.setSubtitle("");
+            iosBean.setSubtitle(conditional.getTicker());
             iosBean.setBody(conditional.getText());
-            iosBean.setDescription("");
+            iosBean.setDescription(conditional.getDescription());
 
             iosPush.sendBroadcast(iosBean);
         } else {
@@ -41,6 +42,7 @@ public class CommonServiceImpl implements CommonService {
             androidBean.setTitle(conditional.getTitle());
             androidBean.setText(conditional.getText());
             androidBean.setDescription(conditional.getDescription());
+
             androidPush.sendBroadcast(androidBean);
         }
     }
