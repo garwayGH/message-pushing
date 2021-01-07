@@ -1,7 +1,6 @@
 package com.viatom.messagepushing.umengpush;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.Maps;
 import com.viatom.messagepushing.umengpush.vo.MyCallBack;
 import com.viatom.messagepushing.umengpush.vo.UmengUpload;
 import com.viatom.messagepushing.umengpush.vo.constants.Constants;
@@ -12,10 +11,8 @@ import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.Map;
 
 /**

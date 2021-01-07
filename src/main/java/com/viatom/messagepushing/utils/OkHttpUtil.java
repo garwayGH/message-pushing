@@ -1,12 +1,7 @@
 package com.viatom.messagepushing.utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.*;
-import org.springframework.util.StringUtils;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -18,7 +13,7 @@ public class OkHttpUtil {
 
     private volatile static OkHttpUtil okHttpUtil = null;
     private static OkHttpClient okHttpClient = null;
-    private static final MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
+    private static final MediaType MEDIA_TYPE = MediaType.parse("application/json; charset=utf-8");
 
 
     private OkHttpUtil() {
@@ -81,7 +76,7 @@ public class OkHttpUtil {
      * @param callback 异步回调函数
      */
     public void doAsyncPost(String url, Headers headers,String json, Callback callback) {
-        RequestBody requestBody = RequestBody.create(mediaType, json);
+        RequestBody requestBody = RequestBody.create(MEDIA_TYPE, json);
         Request.Builder builder = new Request.Builder()
                                              .url(url)
                                              .post(requestBody);
@@ -114,7 +109,7 @@ public class OkHttpUtil {
      * @throws Exception
      */
     public Response doSyncPost(String url,Headers headers, String json) throws Exception {
-        RequestBody requestBody = RequestBody.create(mediaType, json);
+        RequestBody requestBody = RequestBody.create(MEDIA_TYPE, json);
         Request.Builder builder = new Request.Builder()
                 .url(url)
                 .post(requestBody);

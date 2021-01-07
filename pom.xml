@@ -140,6 +140,14 @@
             <optional>true</optional>
         </dependency>
 
+        <!--jackson-databind-->
+        <!--2.0.0 <= FasterXML jackson-databind <= 2.9.10.2有远程代码执行漏洞，禁用-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

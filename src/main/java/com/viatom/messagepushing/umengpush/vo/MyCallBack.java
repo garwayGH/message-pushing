@@ -35,28 +35,20 @@ public class MyCallBack implements Callback {
     public void onResponse(Call call, Response response) throws IOException {
         boolean successful = response.isSuccessful();
         ResponseBody body = response.body();
-        int code = response.code();
-        if (successful) {
-            log.info("code======{}", code);
-            if (body != null) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(body.byteStream()));
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while ((line = br.readLine()) != null) {
-                    sb.append(line);
-                }
-                log.info("请求友盟接口返回结果：{}", sb.toString());
-                br.close();
+
+
+        if (body != null) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(body.byteStream()));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
             }
-        }else {
-            if (body != null) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(body.byteStream()));
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while ((line = br.readLine()) != null) {
-                    sb.append(line);
-                }
-                String resultJson = sb.toString();
+            //返回结果json
+            String resultJson = sb.toString();
+            if (successful) {
+                log.info("请求友盟接口返回结果：{}", resultJson);
+            }else {
                 ObjectMapper objectMapper = new ObjectMapper();
                 Map<?,?> map = objectMapper.readValue(resultJson, Map.class);
                 if (map.containsKey("data")) {
@@ -66,6 +58,7 @@ public class MyCallBack implements Callback {
                     log.info("友盟推送失败，errorCode:{},errorMsg:{}",errorCode,errorMsg);
                 }
             }
+            br.close();
         }
         response.close();
     }
